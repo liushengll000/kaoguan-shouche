@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>骨干人才登高强基班 · 开卷考试速查手册（详版）</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#eef2f7;color:#1f2d3d;line-height:1.65;}
+  header{background:linear-gradient(135deg,#1a3c6e,#2c5aa0);color:#fff;padding:18px 24px;position:sticky;top:0;z-index:30;box-shadow:0 2px 10px rgba(0,0,0,.2);}
+  header h1{font-size:20px;margin-bottom:8px;}
+  .searchbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  #q{flex:1;min-width:240px;padding:9px 12px;border:none;border-radius:8px;font-size:14px;outline:none;}
+  .count{font-size:12px;opacity:.85;}
+  .layout{display:flex;max-width:1340px;margin:0 auto;}
+  nav{width:250px;flex:none;background:#fff;border-right:1px solid #e0e6ed;position:sticky;top:96px;height:calc(100vh - 96px);overflow-y:auto;padding:14px 8px;}
+  nav a{display:block;padding:7px 10px;color:#2c3e50;text-decoration:none;border-radius:6px;font-size:13px;margin-bottom:2px;}
+  nav a:hover{background:#e8f0fe;color:#1a3c6e;}
+  nav .grp{font-weight:bold;color:#1a3c6e;margin:12px 6px 4px;font-size:12px;}
+  main{flex:1;padding:20px 26px;}
+  .filecard{background:#fff;border-radius:12px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.05);border-left:5px solid var(--c);scroll-margin-top:100px;overflow:hidden;}
+  .filecard > .head{padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fafcff;}
+  .filecard > .head:hover{background:#f0f5ff;}
+  .filecard > .head h2{font-size:16px;color:var(--c);}
+  .filecard > .head .meta{font-size:12px;color:#95a5a6;}
+  .filecard .body{padding:6px 22px 18px;display:none;}
+  .filecard.open .body{display:block;}
+  .filecard .body h3{font-size:14px;color:#2c3e50;margin:14px 0 6px;border-left:3px solid var(--c);padding-left:8px;}
+  .filecard .body ul{margin-left:22px;margin-bottom:8px;}
+  .filecard .body li{margin:4px 0;font-size:13.5px;}
+  .filecard .body p{font-size:13.5px;margin:6px 0;}
+  .tag{display:inline-block;background:#eef2f7;color:#2c5aa0;border-radius:4px;padding:1px 7px;font-size:11px;margin-right:4px;font-weight:bold;}
+  .kv{background:#f7fafc;border-left:3px solid var(--c);padding:8px 12px;margin:6px 0;font-size:13px;border-radius:0 6px 6px 0;}
+  .num{color:#c0392b;font-weight:bold;}
+  mark{background:#fff3a0;color:#000;padding:0 2px;border-radius:2px;}
+  .footer{max-width:1340px;margin:0 auto;padding:14px 26px 40px;color:#95a5a6;font-size:12px;}
+  .toggleall{font-size:12px;color:#2c5aa0;cursor:pointer;margin-left:10px;}
+
+  /* ===== 手机自适应 ===== */
+  @media (max-width: 820px){
+    body{font-size:14px;}
+    header h1{font-size:16px;}
+    #q{font-size:13px;min-width:0;}
+    .layout{flex-direction:column;}
+    nav{
+      position:static;height:auto;width:100%;
+      display:none;flex-direction:column;
+      border-right:none;border-bottom:1px solid #e0e6ed;
+      max-height:60vh;overflow-y:auto;
+    }
+    nav.show{display:flex;}
+    nav a{font-size:13px;padding:9px 12px;}
+    main{padding:14px 12px;}
+    .filecard .body{padding:6px 14px 14px;}
+    .filecard > .head h2{font-size:14.5px;}
+    .filecard .body li,.filecard .body p{font-size:13px;}
+    .toggleall{display:block;margin:6px 0 0;}
+    .menubtn{display:inline-block;}
+    .question{padding:12px 12px;}
+    .stem{font-size:13.5px;}
+    .opt{font-size:13px;}
+  }
+  .menubtn{
+    display:none;background:#fff;color:#1a3c6e;border:none;
+    padding:6px 12px;border-radius:8px;font-size:13px;cursor:pointer;font-weight:bold;
+  }
+  /* ===== 题库样式 ===== */
+  .quiz-title{background:#fff3e0;color:#b26a00;padding:12px 16px;border-radius:10px;font-weight:bold;font-size:14px;margin-bottom:12px;}
+  .question{background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);border-left:5px solid #c0392b;}
+  .qhead{font-size:13px;margin-bottom:6px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .qtype{background:#e8f0fe;color:#1a3c6e;border-radius:4px;padding:1px 8px;font-weight:bold;}
+  .ans{background:#eafaf1;color:#1e8449;border-radius:4px;padding:1px 8px;font-weight:bold;}
+  .stem{font-size:14.5px;font-weight:600;color:#2c3e50;margin-bottom:8px;line-height:1.55;}
+  .opt{padding:5px 10px;margin:3px 0;background:#f7fafc;border-radius:6px;font-size:14px;}
+  mark{background:#fff3a0;color:#000;padding:0 2px;border-radius:2px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>骨干人才登高强基班（第一期）· 开卷考试速查手册（详版）</h1>
+  <div class="searchbar">
+    <input id="q" placeholder="输入关键词速查（Token、五级停电、政绩观、创新激励、采集2.0、光明大模型、AI+电力、独角兽、非化石能源…）" oninput="search()">
+    <span class="count" id="cnt"></span><button class="menubtn" onclick="document.getElementById('nav').classList.toggle('show')">☰ 目录</button>
+    <span class="toggleall" onclick="toggleAll()">[展开/收起全部]</span>
+  </div>
+</header>
+
+<div class="layout">
+<nav id="nav">
+  <div class="grp">文件清单（点击展开）</div>
+  <a href="#f1">① 学员手册</a>
+  <a href="#f2">② 权力观政绩观事业观</a>
+  <a href="#f3">③ 山东社会经济发展</a>
+  <a href="#f4">④ 五级停电研判规则</a>
+  <a href="#f5">⑤ 供电服务风险防范</a>
+  <a href="#f6">⑥ 采集2.0停电监测通知</a>
+  <a href="#f7">⑦ 人工智能技术前沿</a>
+  <a href="#f8">⑧ 人工智能应用实践</a>
+  <a href="#f9">⑨ 职工创新政策解读</a>
+  <a href="#f10">⑩ 创新创效大讲堂</a>
+  <div class="grp">速查专题</div>
+  <a href="#t1">专题A：AI核心概念</a>
+  <a href="#t2">专题B：关键数据指标</a>
+  <a href="#t3">专题C：政策与激励</a>
+</nav>
+
+<main>
+
+<!-- ========== f1 学员手册 ========== -->
+<div class="filecard open" id="f1" style="--c:#34495e;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>① 学员手册 · 骨干人才登高强基班（第一期）</h2><div class="meta">PDF · 16页 · 国网山东省电力公司 · 2026年7月·泰安 · 实训基地B座302教室</div></div><span>▾</span></div>
+  <div class="body">
+    <p><b>定位：</b>培养生产一线、经营管理领域能"独当一面"的骨干人才。围绕<b>政治力、实践力、创新力、引领力</b>四维能力。</p>
+    <h3>课程模块（学员手册第四章）</h3>
+    <ul>
+      <li>"十五五"时期山东经济发展形势和发展动力</li>
+      <li>新型电力系统下山东电力供需格局</li>
+      <li>创新思维与创新管理</li>
+      <li>科技成果培育和鉴定、各等级科技奖励申报工作要求</li>
+      <li>习近平关于树立和践行正确权力观、政绩观、事业观的论述（焦丽萍·省委党校·7.25上午）</li>
+      <li>工作中的魅力沟通与协调技巧（朱晓红·7.30上午）</li>
+      <li>职工创新创效政策解读（高兆丽·公司工会·7.30下午）</li>
+      <li>科技成果培育和鉴定、科技奖励申报（许乃媛·公司科技部·7.31上午）</li>
+      <li>学员论坛：培训感悟分享、人才评价、课题申报经验交流（7.30晚）</li>
+    </ul>
+    <h3>培训管理规定（第一章·"四严"管理）</h3>
+    <ul>
+      <li>统一安排食宿的班：<b>严禁在外留宿/携无关人员住宿、严禁外出就餐、严禁自带公务车、严格请销假</b>。</li>
+      <li>学习管理：严禁他人代参培；自己动手撰写发言材料/体会/调研报告/论文，<b>不准请人代写、不准抄袭</b>；严禁作弊替考。</li>
+      <li>考勤：每天早中晚三次签到；迟到/早退30分钟以上视为旷课。</li>
+      <li>请假：向市公司党委组织部书面申请→报人才评价中心批准→交班主任；累计请假不得超过总课时 <span class="num">1/7</span>，否则不予结业；无故旷课责令退培、费用自理并通报。</li>
+      <li>安全：政治安全（两个确立、四个意识、四个自信、两个维护）、实训安全、舆情安全、信息安全（严禁散播涉密内容）、消防、人身。</li>
+      <li>生活：封闭管理、严禁饮酒、严禁收受礼品礼金购物卡等（中央八项规定）。</li>
+    </ul>
+    <h3>考核办法（第二章）</h3>
+    <div class="kv">个人总成绩 = <b>培训表现（30分）</b> + <b>考试考核（70分，百分制）</b> + <b>奖励积分</b></div>
+    <ul>
+      <li>培训表现基础30分，扣完为止：漏签/替签每次-2；课堂违纪每次-2；事假病假每课时-0.2；吸烟/大功率电器每次-5；损坏公物-5；聚餐组织者-10、参与者-5。</li>
+      <li>考试考核作弊/替考/抄袭代写 → 成绩0分。</li>
+      <li>奖励积分：积极参与班级事务，加0.1~1分。</li>
+    </ul>
+    <h3>其他信息</h3>
+    <ul>
+      <li>作息时间：早08:30-12:00，午14:00-17:30，晚19:00-21:00。</li>
+      <li>班主任王小曼 15966308510；助教王蕊蕊 19854199721。</li>
+      <li>班级微信群实名"真实姓名-单位简称"，培训结束解散。</li>
+      <li>网络安全"十严禁"：禁弱口令、禁装无关软件、禁搭无线热点、禁互联网传敏感信息、禁内外终端混用、禁私自开互联网出口、禁未授权设备入网、禁未过测评系统入网、禁违规U盘、禁外网终端连互联网。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== f2 权力观 ========== -->
+<div class="filecard" id="f2" style="--c:#8e44ad;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>② 关于树牢正确权力观、政绩观、事业观论述</h2><div class="meta">PDF · 2026.01 · 习近平总书记重要论述汇编</div></div><span>▾</span></div>
+  <div class="body">
+    <p>前言关键引用："树立和践行正确的政绩观，起决定性作用的是党性。""<b>共产党人必须牢记，为民造福是最大政绩</b>。""新征程是充满光荣和梦想的远征，没有捷径，唯有奋斗。"</p>
+    <h3>一、重大意义</h3>
+    <ul>
+      <li>（一）从历史看：党的优良传统。毛泽东"全心全意为人民服务"；邓小平"帮助人民群众自己动手"；新时代"以人民为中心"，"人民对美好生活的向往就是我们的奋斗目标"。</li>
+      <li>（二）从现实看：①巩固党的执政地位、完成执政使命的内在要求——"<b>把抓好党建作为最大的政绩</b>"。②践行以人民为中心的具体体现——"为民造福是最大政绩"。③营造风清气正政治生态的必然要求。</li>
+      <li>理论维度：马克思主义权力观政绩观事业观在新时代的生动实践；实践层面：推动高质量发展的必然要求；长远：关乎执政根基与长治久安。</li>
+    </ul>
+    <h3>二、丰富内涵及内在联系</h3>
+    <h3>1. 正确权力观</h3>
+    <ul>
+      <li>回答四个核心问题：<b>权力为何物、权力为何授、权力为何用、权力依何行</b>。</li>
+      <li>权力为何物：本质是<b>公共资源和责任载体</b>，社会主义中国权力本质属性是人民性，"我们的权力是党和人民赋予的，是为党和人民做事用的"。</li>
+      <li>权力为何授：人民对执政者的信任与委托；宪法"一切权力属于人民"。认知错位→行为失向（"不怕群众不满意，只怕领导不注意"）。</li>
+      <li>权力为何用：服务于公共利益与治理目标，需以"正当性"为前提，符合法律规定。"立党为公、执政为民"。</li>
+      <li>权力依何行：依法依规是基本准则。"公正用权、依法用权、为民用权、廉洁用权"；"有权必有责、用权受监督、违法必追究"。</li>
+    </ul>
+    <h3>2. 正确政绩观</h3>
+    <ul>
+      <li>回答：政绩为谁而树、树什么样的政绩、靠什么树政绩。</li>
+      <li>为谁而树：<b>为人民而树</b>，"为民办事、为民造福是最重要的政绩"。</li>
+      <li>树什么样的政绩：经得起<b>实践、人民、历史</b>检验；不是短期形象工程，是惠及群众的实绩。例：塞罕坝荒漠变林海。</li>
+      <li>靠什么树政绩：靠<b>真抓实干、勇于担当、廉洁奉公</b>。</li>
+    </ul>
+    <h3>3. 正确事业观</h3>
+    <ul>
+      <li>核心内涵：坚持党的事业第一、坚守人民利益第一、服从工作需要第一。</li>
+      <li>例：黄文秀（广西百色百坭村第一书记）——以人民为中心的事业。</li>
+      <li>怎么样干事业：真负责、勇担当、敢斗争。</li>
+    </ul>
+    <h3>内在联系</h3>
+    <div class="kv">权力观为政绩观和事业观提供<b>价值导向</b>；政绩观是权力观的<b>实践载体</b>和事业观的<b>具体体现</b>；事业观为前两者注入<b>精神动力</b>。</div>
+    <h3>三、实践要求——处理好"五个关系"</h3>
+    <ul>
+      <li>①党性与个性：强化党性锤炼，"党性是立身立业立言立德的基石"，"理想信念是精神上的钙"。</li>
+      <li>②对上与对下：强化为民思想，"<b>民之所盼、我必行之</b>"。</li>
+      <li>③潜绩与显绩：强化实干担当，"为官一任、造福一方"；"功成不必在我"，甘于做铺垫性工作。例：红旗渠、谷文昌。</li>
+      <li>④干事与成事：强化本领养成，"领导干部不仅要有担当的宽肩膀，还得有成事的真本领"。</li>
+      <li>⑤自律与他律：强化制约监督，"习惯在受监督和约束的环境中工作生活"。</li>
+    </ul>
+    <p>结语："权力因人民赋予而神圣，政绩因为民造福而闪耀，事业因与党和人民同频共振而不朽。"</p>
+  </div>
+</div>
+
+<!-- ========== f3 山东经济 ========== -->
+<div class="filecard" id="f3" style="--c:#16a085;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>③ "十五五"时期山东经济发展形势与发展动力</h2><div class="meta">PDF · 提纲 · 约122页 · 经济形势与发展动力</div></div><span>▾</span></div>
+  <div class="body">
+    <h3>总览</h3>
+    <ul>
+      <li>习近平总书记赋予山东"<b>走在前、挑大梁</b>"重大使命。</li>
+      <li><span class="num">2025年山东GDP达10.3万亿元</span>，全国第三个、北方第一个迈入"十万亿俱乐部"省份。</li>
+      <li>目标：加快建设绿色低碳高质量发展先行区，打造高水平对外开放新高地，努力成为北方地区经济重要增长极。</li>
+    </ul>
+    <h3>一、"十四五"成就（发展基础坚实）</h3>
+    <ul>
+      <li>GDP增长5.5%、达10.3万亿；粮食总产稳定在1100亿斤以上；民营经济增加值增长31.6%。</li>
+      <li>三次产业结构 <span class="num">6.6 : 39.3 : 54.1</span>（"三二一"）。</li>
+      <li>19条标志性产业链；制造业总体规模全国第一梯队；国家制造业单项冠军<span class="num">274家</span>、专精特新"小巨人"<span class="num">1356家</span>；国家级数字领航企业18家、工业互联网平台46家（均居全国首位）。</li>
+      <li>高新技术企业5年增加2万多家；发明专利授权累计26.2万件（翻番）。</li>
+      <li>非化石能源发电装机达<span class="num">1.39亿千瓦</span>，占比提升至<span class="num">54%</span>，历史性超过煤电；空气优良天数比例77.8%。</li>
+      <li>沿海港口货物吞吐量超<span class="num">21亿吨</span>居全国首位；算力规模增长3.5倍，智能算力占比超50%。</li>
+      <li>常住人口城镇化率67.5%；城乡收入比缩小至2.12；人均预期寿命80.5岁。</li>
+      <li>文化："好客山东 好品山东"品牌；国际孔子文化节、尼山世界文明论坛。</li>
+    </ul>
+    <h3>结构性矛盾（挑战）</h3>
+    <ul>
+      <li>政策周期"拐点"明显（重化工业特征）；低端产能过剩、高端核心技术缺乏；人口红利"黄金增长期"逐渐失却；区域差距（东西部）；资源结构优势发挥不足（人力资源未转人力资本，质量竞争力指数全国第10）；文化资源认识不足。</li>
+    </ul>
+    <h3>二、宏观环境</h3>
+    <ul>
+      <li>国际：世界百年变局加速，单边主义保护主义抬头，关税战贸易战冲击；中美博弈复杂。王毅（2026.3.8）：相处之道"相互尊重、和平共处、合作共赢"；2026是中美关系"大年"。</li>
+      <li>特朗普2026年5月13-15日访华，两国元首同意将"中美建设性战略稳定关系"作为新定位。</li>
+      <li>国内：制度优势、大国优势、超大规模市场需求优势（14亿+人口、4亿+中等收入群体）、经济综合优势、文明理念优势。</li>
+      <li>中国GDP 2025年达<span class="num">140万亿元</span>稳居世界第二，占世界经济18%，对世界增长贡献超30%；占美国经济约70%。</li>
+      <li>世界500强中国130家；独角兽全球1523家（美国758、中国343，中美占72.2%）；瞪羚羊中国278家。</li>
+      <li>中国R&D研发费用2025年<span class="num">3.9万亿</span>，占全球超20%仅次于美国；全球创新指数排名从2020年第14位跃升至2025年第<span class="num">10位</span>。</li>
+      <li>五年规划是中国特色制度优势（陈云、周恩来等先后说明"一五"至"七五"）。</li>
+    </ul>
+    <h3>三、发展动力剖析</h3>
+    <ul>
+      <li>"十五五"GDP年均增速设定<span class="num">5%</span>（工作中全力争取更好），经济大省必须"挑大梁"。</li>
+      <li>（一）<b>科技创新</b>是发展新质生产力的核心要素：强平台（崂山实验室、争创国家区域科技创新中心、济南"激光谷"近300家激光企业）、强主体（企业站C位，"科工一体"，天润工业创新联合体）、强转化（山东科技大市场、职务成果单列管理）。</li>
+      <li>（二）产业转型升级：制造业是山东"脊梁"；新兴产业扩容（高端装备、信息技术产值过万亿，布局50个特色集群）；未来产业（量子、生物制造、深海极地，济青烟3个先导区+20条政策）；数字经济赋能（"人工智能+"、山钢智慧炼钢、济南工业软件中试基地）。</li>
+      <li>（三）扩大内需：户籍常住人口"双过亿"，2025社零总额<span class="num">4.2万亿</span>；以旧换新、服务消费（服务业增加值约5.59万亿、贡献率近六成）、有效投资。</li>
+      <li>（四）绿色转型："十五五"是碳达峰决胜期；2025非化石能源装机占比<span class="num">54.2%</span>超煤电；光伏装机连续8年全国第一；核电核准在建全国第三。</li>
+      <li>（五）开放赋能：上合示范区、自贸试验区、跨国公司领导人青岛峰会；"一国一策"；"鲁贸全球""好品山东"。</li>
+    </ul>
+    <h3>四、政策建议</h3>
+    <ul>
+      <li>锚定"走在前、挑大梁"，实施"十大工程"、塑强"十个新优势"；陆海统筹发挥海洋优势（海岸线3345公里占1/6）。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== f4 五级停电 ========== -->
+<div class="filecard" id="f4" style="--c:#2980b9;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>④ 五级停电研判规则解读与案例解析</h2><div class="meta">PPT · 邱涛（国网烟台供电公司）· 2026.7.29 · 99页</div></div><span>▾</span></div>
+  <div class="body">
+    <h3>整体结构</h3>
+    <div class="kv">一、五级停电概念介绍 → 二、五级复电研判规则 → 三、停电监测信息查询 → 四、停电查询方法（含实时停电）</div>
+    <h3>一、五级停电概念介绍</h3>
+    <ul>
+      <li>围绕终端停上电事件案例展开，明确停电事件类型与判定标准（大量篇幅为概念界定与案例）。</li>
+    </ul>
+    <h3>二、五级复电研判规则</h3>
+    <ul>
+      <li>复电研判的判定逻辑与规则（与停电相对应）。</li>
+    </ul>
+    <h3>三、停电监测信息查询</h3>
+    <ul>
+      <li>系统侧停电监测信息的功能与查询路径。</li>
+    </ul>
+    <h3>四、停电查询方法（重点·四种方法）</h3>
+    <div class="kv"><b>方法1：依据停电事件查询</b> ｜ <b>方法2：依据曲线查询</b> ｜ <b>方法3：透抄电能表内数据</b> ｜ <b>方法4：依据停电监测查询</b></div>
+    <h3>方法1：依据停电事件查询</h3>
+    <ul>
+      <li>路径：新一代 数据批量查询 → 事件数据查询 → 终端事件（终端停上电）/ 电能表事件（电能表掉电）。</li>
+      <li>事件类型与时限（举例）：电能表 OI:3011 主动上报给终端，停电发生<b>10分钟内</b>上报；电表模块 OI:3011 主动上报给终端（不带时间）；采集终端 OI:3106 主动上报给主站，停电发生时间/上次复电时间，<b>10分钟内</b>上报。</li>
+      <li>优点：信息准确；缺点：不明朗。</li>
+    </ul>
+    <h3>方法2：依据曲线查询</h3>
+    <ul>
+      <li>路径：数据批量查询 → 曲线数据批量查询 → 电压/电流/功率/电能示值曲线。</li>
+      <li>判断特征：电压/电流/功率 空值或0 → 可能存在采集缺点；电能示值 空值或示数不变。</li>
+      <li>需结合电能表停电事件综合判断。</li>
+      <li>优点：简单明了；缺点：信息不准。</li>
+    </ul>
+    <h3>方法3：透抄电能表内数据</h3>
+    <ul>
+      <li>路径：电能表数据召测 → 电能表明细。</li>
+    </ul>
+    <h3>方法4：依据停电监测查询（推荐·功能最全）</h3>
+    <ul>
+      <li>路径：拓展应用 → 停电监测。</li>
+      <li>子功能：实时停电查询、历史停电查询、停电统计、重点用户监测、民生用户监测、停电时长监测、停电趋势分析、回溯功能。</li>
+      <li>停电全景监测：短时停电监测、频繁停电监测、灾害监测。</li>
+    </ul>
+    <p>注：该PPT含大量终端/电能表停上电事件案例图片，研判核心是"<b>先研判、后操作</b>"，防设备误报。</p>
+  </div>
+</div>
+
+<!-- ========== f5 供电服务风险 ========== -->
+<div class="filecard" id="f5" style="--c:#2980b9;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>⑤ 供电服务关键风险点辨识与防范</h2><div class="meta">PPT · 赵建文 · 2026.07 · 107页</div></div><span>▾</span></div>
+  <div class="body">
+    <h3>结构</h3>
+    <div class="kv">第一部分（背景案例）｜ 第二部分 客户服务典型应用场景（12类诉求）｜ 第三部分 事前风险防范</div>
+    <h3>第一部分 · 背景案例</h3>
+    <ul>
+      <li>案例：2025年6月泰安市气象局发布当年首个<b>高温红色预警</b>（一周内气温攀升至40℃以上）。</li>
+      <li>泰安公司客户服务专项稽查：营销稽查监控中心梳理上半年电压质量问题工单，对15条未改善工单发设备管理单位落实整改。</li>
+      <li>向其他专业发布《业务联系单》提醒；电压质量问题"威胁电网安全、影响用电感知、治理周期长"。</li>
+    </ul>
+    <h3>第二部分 · 供电服务高频诉求（12类客户诉求）</h3>
+    <ul>
+      <li><b>诉求01 电量电费异常</b>：14个细分场景（阶梯电价升档、增加用电人口、新增大功率设备、客户侧漏电、季节性、非直供、老人孩子居住、尖峰电量多、功率因数不达标加收、电能表失准、错接线、换表录错表码、采集表码突变、长期不在家突然收到电费通知）。四步法：共同计算合理电量、检查公司设备、协助用能诊断、电能表校验。</li>
+      <li><b>诉求02 非直供电小区要求转直供</b>：转供加价过高、小区配网差频繁停电、移交改造方案不合理。</li>
+      <li><b>诉求03 交费差错更正</b>：场景一不小心交错（同时校验户名户号+弹窗提醒）；场景二故意错交/洗钱（洗钱风险：分拆缴纳至个人户号再退费/销户；电信诈骗诱导转账）。标准话术见下。</li>
+      <li><b>诉求04 错发短信</b>：档案联系方式错误、变更未及时更新、客户拉黑未订阅。网格服务事前告知、营销上行短信统计、与运营商信息共享。</li>
+      <li><b>诉求05 电器损坏核损</b>。</li>
+      <li><b>诉求06 电价执行错误</b>：新装方案错误（内外勾结/营业差错）、私自改变用电性质、对政策不认可。电价自动校正。</li>
+      <li><b>诉求07 增加客户办电成本</b>：表前线让"三零"客户承担、施工单位私收表箱费、农灌表后线过长、未预留充电桩位置。</li>
+      <li><b>诉求08 对催费方式有异议</b>：欠费停电前未通知、未收到短信、催费时间不合理/频繁、态度差、垫付后催费、不知情改费控、不认可张贴通知单、非直管小区欠费不能停电？</li>
+      <li><b>诉求09 私自更名过户</b>：更名与过户混淆、长期不用电户名被改、产权纠纷未过户（案例：2019年更名不规范投诉、8月过户未通知投诉→舆情）。</li>
+      <li><b>诉求10 电压质量</b>：低电压、光伏过电压、设备虚接、精密制造客户高要求、变压器档位错位。</li>
+      <li><b>诉求11 无故停电</b>：停电未告知到位、垫付电费后停电催费。</li>
+      <li><b>诉求12 抢修态度</b>：超时限（案例：报修超城区规定时限、电工辱骂客户）、服务不规范。</li>
+    </ul>
+    <h3>高频工单数据（典型）</h3>
+    <ul>
+      <li>意见工单二级：电力设施140、民事赔偿111、多次停电98、人员服务行为65、短信服务53、计量装置安装45、抢修质量42。</li>
+      <li>全量工单二级：客户侧用电需求配合5285、电表数据异常1381、交费差错更正466、电力短信415。</li>
+    </ul>
+    <h3>第三部分 · 关键防范要点与标准话术</h3>
+    <ul>
+      <li><b>交费差错标准话术</b>：①"经与收款方沟通同意退还，将联系其尽快退回"；②收款方不配合："很抱歉…建议向公安机关报警或司法机关提起诉讼维护权益"。</li>
+      <li><b>无户号拒收电费问题</b>：依《营销专业网络安全防御社会工程学攻击工作规范》，通过开放式问题核实户名/户号/表号/地址/身份证号/联系电话等，符合3项及以上或现场提供身份证件可受理；<b>首问负责</b>，不能让客户自己核实户号。</li>
+      <li><b>差异化服务</b>：老年人习惯现金→推广子女代交+告知书；中年人→金融机构代扣/网上国网；青年人→微信支付宝。</li>
+      <li><b>信息安全</b>：客户编号姓名地址务必脱敏；营业厅纸质材料碎纸处理。</li>
+      <li><b>更名/过户依据《供电营业规则》</b>：第三十条（过户：用电地址容量不变、结清债务、私自过户可中止供电）；第三十一条（更名：主体地址容量类别不变）。营销通知〔2025〕19号规范租赁户业务。</li>
+      <li>连续5个月发行电量为0系统自动提醒，依据《供电营业规则》第三十五条（连续6个月不用电可公告销户）。</li>
+      <li><b>抢修标准</b>：7×24小时，城区<span class="num">45分钟</span>、农村<span class="num">90分钟</span>到达现场；先联系表态马上出发；特殊恶劣天气及时解释；自有渠道业务优先响应。</li>
+      <li>服务态度："我们不是电老虎，客户也不是小绵羊，平等的供用电关系，以礼相待、不卑不亢"。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== f6 采集2.0 ========== -->
+<div class="filecard" id="f6" style="--c:#2980b9;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>⑥ 强化采集2.0停电监测能力的通知</h2><div class="meta">PDF · 营销计量〔2024〕61号 · 国网营销部 · 7页</div></div><span>▾</span></div>
+  <div class="body">
+    <h3>工作目标</h3>
+    <ul>
+      <li>提升停电事件实时监测水平，推进设备软硬件升级，构建<b>全方位、立体化</b>停电监测体系。</li>
+      <li>建立健全长效机制，常态化推动停电监测分析、推送，推动停电"<b>早知快处</b>"。</li>
+      <li>实现省、市、县、所各级人员对停电范围与用户精准掌握。</li>
+    </ul>
+    <h3>重点措施</h3>
+    <div class="kv">（一）加强计量装置停电报送能力 ｜ （二）优化终端停复电信息报送策略 ｜ （四）提升系统停电研判能力 ｜ （六）拓展系统停电监测能力</div>
+    <ul>
+      <li><b>计量装置报送</b>：年底前完成老旧智能电能表/采集终端/通信模块更换改造；加快22版采集终端与双模通信（HDC）应用，全部在运计量设备具备停复电信息主动上报；全面开启主动上报功能；排查时钟电池欠压及时更换。</li>
+      <li><b>终端报送策略</b>：规范软件版本管理；停电事件上报配置为<b>最高优先级</b>，产生终端停电或收到电能表停电事件时，暂停其他采集和事件上报任务，优先上报；增加终端滤重机制（1分钟内）。</li>
+      <li><b>系统研判</b>：终端产生停电事件时只接收<span class="num">5只</span>电能表报送的停电事件（防误报）；再开展后续操作。</li>
+      <li><b>拓展监测</b>：加强停电监测与处置管理。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== f7 AI技术前沿 ========== -->
+<div class="filecard" id="f7" style="--c:#27ae60;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>⑦ 人工智能技术前沿与应用</h2><div class="meta">PPT · 高珊珊 教授（山东财经大学）· 2026.7.28 泰安 · 145页</div></div><span>▾</span></div>
+  <div class="body">
+    <h3>课程目录</h3>
+    <div class="kv">AI发展历程及相关概念 ｜ AI创新应用（以电力为例） ｜ 人工智能浪潮下的效率革新</div>
+    <h3>一、AI发展历程与概念</h3>
+    <ul>
+      <li>定义：AI是利用计算机模拟人类智能行为科学的统称（会听、会看、会说、会思考、会学习、会行动）。</li>
+      <li><b>图灵测试</b>：1950年图灵《计算机与智能》；"人工智能之父"麦卡锡（1956达特茅斯会议正式命名）。GPT-4.5（2025.4）人类误判率73%；MiniMax国内首个通过人机辩论图灵测试（骗过42%观众）。</li>
+      <li>里程碑：1966第一次AI寒冬；1980专家系统（XCON每年省数千万）；1997深蓝胜卡斯帕罗夫；2016 AlphaGo 4:1胜李世石；2022.11.30 ChatGPT引爆大模型；2024.10 Hinton（深度学习之父）获诺贝尔物理学奖。</li>
+      <li><b>DeepSeek</b>：2025.1.20发布R1（性能对标GPT-4，训练成本仅1/10）；梁文锋（1985，广东）。Manus（肖弘，1993）2025.3.6发布；2026发改委禁止Meta收购Manus。</li>
+      <li>2026多"元年"：智能体AI元年、世界模型元年、具身智能落地元年。</li>
+      <li>中国AI：2024.3"人工智能+"写入政府工作报告；2025.8《关于深入实施"人工智能+"行动的意见》（国发〔2025〕11号）；2024我国AI产业规模超9000亿（+24%），2025核心产业超<span class="num">1.2万亿</span>，2026预测破<span class="num">1.5万亿</span>；企业超6000家（全球15%）。</li>
+      <li>山东AI：骨干企业<span class="num">1124家</span>，核心产业营收破<span class="num">1200亿</span>（占全国10%）。泰安：华鲲振宇北方基地（肥城）97天投产，年产7万台AI一体机；规上工业企业关键业务数字化率76.82%、转型覆盖率95.1%。</li>
+    </ul>
+    <h3>核心概念</h3>
+    <ul>
+      <li><b>机器学习</b>：核心不是写规则，而是从数据自动找规律（泛化能力）；过程：收集清洗→特征→选模型→训练→验证→部署。</li>
+      <li><b>深度学习</b>：原始数据→多层可学习表示→输出（端到端）。核心：强算力+海量数据+先进模型。框架：TensorFlow、PyTorch、Caffe（贾扬清）。</li>
+      <li>CNN（空间）/ RNN（时间）/ Transformer（全局关系，注意力机制，NLP核心）。</li>
+      <li><b>大模型</b>："大"=参数庞大+数据量大+算力高。GPT-3（1750亿）→GPT-4（1.8万亿）→GPT-5.5（约9万亿，2026.4）。DeepSeek-V3（671B混合专家）；V4总参数1.6万亿、100万token上下文。</li>
+      <li><b>多模态大模型（MLLM）</b>：文本/图像/音频/视频联合训练，具身智能"大脑"。</li>
+      <li><b>AIGC</b>：继PGC、UGC之后的第三代内容创作方式。</li>
+      <li><b>大模型分级</b>：L0通用（通识教育）、L1行业、L2垂直/任务。</li>
+      <li><b>光明电力大模型</b>：国家电网发布，国内首个千亿级多模态电力行业大模型（2024.12.19北京发布，"光明"配网调度员亮相）。</li>
+      <li><b>世界模型</b>：感知编码→动态推演（当前+动作→未来）→控制决策；强调"可解释！"。应用：自动驾驶（特斯拉、蔚来NWM）、机器人、科研仿真。</li>
+      <li><b>具身智能</b>：1950图灵提出；2025/2026政府工作报告连续提及培育；2026.6.1行业标准YD/T 6770实施。</li>
+      <li>AI发展阶段比喻：聊天机器人→推理者（DeepSeek-R1）→代理者（OpenClaw）→创新者（2030后）→组织者（2040后）。</li>
+    </ul>
+    <h3>二、AI创新应用——以电力为例</h3>
+    <ul>
+      <li>算力与电力：2025我国数据中心用电<span class="num">1660亿千瓦时</span>（占1.68%，近3年增速39.5%）；预计2030算力中心用电超<span class="num">7000亿千瓦时</span>占5.3%。DeepSeek-V3训练耗电98万度；GPT-4训练耗电1620万度。</li>
+      <li>"算力的尽头是电力"。</li>
+      <li>AI+电力场景：①负荷预测与平衡（国电南瑞）②故障诊断与预测性维护（提前24-72h预警，误报率降40%）③新能源消纳与零碳（远景、阳光电源）④智能运维与安全管控（特变电工鲁缆无人质检年省300万）⑤数字化管理与决策。</li>
+      <li>挑战：技术（单点局部应用、缺全链条通用模型、可解释性不足）；管理（数据孤岛）；"十五五"双重压力（增量提速+电价市场化）；风险管控与规则空白。</li>
+      <li>行业大模型：长城（中国石化，推理效率+100%）、昆仑（中国石油，3000亿参数）、海能（中国海油）。</li>
+    </ul>
+    <h3>三、效率革新 & 大模型产品</h3>
+    <ul>
+      <li>AI帮我们：智能搜索、文档校对、设计生成、市场分析、自动日程、智能面试、任务分配。</li>
+      <li>国外：ChatGPT（GPT-5.5）、Codex、Cursor、Claude（Anthropic，宪法AI）、Gemini（谷歌）、Grok（马斯克xAI）、LLaMA（Meta开源）、Sora（文生视频）。</li>
+      <li>国内：DeepSeek（V3训练仅558万美元，二十分之一）、通义千问（阿里）、豆包（字节）、文心一言（百度）、Trae（字节代码编辑器）、Kimi、360、腾讯云BI、即梦AI、剪映。</li>
+      <li>Token计费：中文约1.5汉字≈1 Token；国产输入0.2-0.8元/百万Token，海外旗舰3-15美元/百万Token。</li>
+      <li>提示词（Prompt）：APE/ERA/RTF/TAG框架；"你是谁→在哪工作→要什么→不能做什么→怎么算成功"。</li>
+      <li>中文屋实验（塞尔1980）：通过图灵测试≠真正理解/意识，划定AI红线。</li>
+      <li>结语："技术越强，越要心中有舵；信息越多，越要眼明心定"，人永远是技术的主人。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== f8 AI应用实践 ========== -->
+<div class="filecard" id="f8" style="--c:#27ae60;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>⑧ 人工智能技术应用实践（配套）</h2><div class="meta">PDF · 2026.7.28 · 122页 · AI课实操配套</div></div><span>▾</span></div>
+  <div class="body">
+    <h3>PART 1：AI发展三阶段——四大核心关键词</h3>
+    <ul>
+      <li><b>Token（词元）</b>：2026.3.23国家数据局定中文名"词元"，定性"智能时代价值锚点/结算单位"。类比AI世界"水表"，按字计量、企业按消耗付费。截至2026.4国产大模型调用量连续30日超海外、居全球第一梯队。Token爆发→用电激增，2030算力中心用电将超7000亿千瓦时占5.3%；每度电支撑词元价值约11元（约22倍跃升）。</li>
+      <li><b>模型（大脑）</b>：演进三阶段——早期小模型（简单识别）→通用大模型（DeepSeek）→行业垂直模型（电力、制造）。大模型=大算力+大数据+强算法；最高神经元达10万亿（人脑1/10）；DeepSeek R1 671B / 32B。</li>
+      <li><b>知识库（书架）</b>：大模型内置知识相当于读几百万本书，但垂直领域（电网巡检规范、工单处置等）欠缺。知识库可随时更新、"越训越傻"无忧。GPT-1（1.17亿参数）→GPT-2（15亿）→GPT-3（1.17亿，疑原文笔误应为千亿级）。</li>
+      <li><b>智能体/Agent（数字员工）</b>：配备大脑的"员工"，自主想/搜/写。核心：设立目标→拆解任务→调用工具→完成闭环。</li>
+    </ul>
+    <h3>PART 2：从"会回答"到"会干活"</h3>
+    <ul>
+      <li>大模型进化：推理（脱口而出→深思熟虑）、记忆（金鱼→过目不忘）、感官（盲人摸象→眼观六路，原生多模态）、工具（能说会道→手脚并用）。</li>
+      <li><b>Harness工程</b>：套在大模型外的"操作系统"，模型=CPU，Harness接内存硬盘工具调度，使其变自主Agent。</li>
+      <li><b>执行型代理 Claude Code</b>：进入工作目录的AI编程助手，读文件/写代码/跑脚本/看报错/改结果。</li>
+      <li><b>拟人化智能体（类Claw）</b>：长期运行、有身份/记忆/工具/技能；通过SOUL.md/IDENTITY.md/AGENTS.md/TOOLS.md/USER.md/MEMORY.md分层构建。</li>
+      <li><b>Skill</b>：给AI装的"能力包"/"App"，写一次自动应用；本质=经验沉淀（软件3D打印）。例：股票策略、线损诊断、PPT生成、营销工单归因。AI能力复利=记忆+知识+技能+工作流。</li>
+      <li>上下文分层12层构建：基础模型→平台规则→SOUL→IDENTITY→AGENTS→TOOLS→USER→MEMORY…</li>
+    </ul>
+    <h3>PART 3：公司人工智能应用实践</h3>
+    <ul>
+      <li><b>三个判断</b>：①认知——不能用传统逻辑理解未来（AI是"十五五"重大变量）②竞争——行业边界重构 ③人才——<b>最需转变的是管理干部</b>（机关管理岗材料/协调/统计/分析/汇报/督办易被重构）。</li>
+      <li>公司要求：林董"人工智能+"行动、实训基地全员化工具化；陈总"场景为王、应用拉动、专业牵头、季度推进"。</li>
+      <li><b>平台数据</b>：用户突破<span class="num">10万</span>名；平台访问<span class="num">443.7万次</span>；大模型调用<span class="num">770.5万次</span>；接入DeepSeek-R1、Qwen-72B、光明、Qwen-VL等<span class="num">15个</span>大模型；发布智能体应用<span class="num">528个</span>。</li>
+      <li>143项典型场景，22项智能体推广应用，月均调用<span class="num">1.2亿次</span>；牵头直流设备状态评估等国网试点<span class="num">12项</span>（国网最多）。</li>
+      <li><b>安全生产</b>：无感监督、外包队伍管理智能体（9轮考评、参评1.8万人次、完成率87%、正确率97%）；配网无人机智能巡检（识别8类设备25类缺陷、准确率85-90%，10千伏故障率降40%、抢修效率升60%）；直流设备状态评估（准确率85%+）。</li>
+      <li><b>调控</b>：负荷预测智能体（气象+负荷大模型，短期准确率<span class="num">98%</span>）；电网故障研判等6场景落地。</li>
+      <li><b>客户服务</b>：全渠道工单智能预警（95598/12345/舆情等5渠道，研判1.5万条、效率+30%、高风险识别率92%、供电问题压降5%）；供电方案生成（低压秒级、高压≤3天、累计20余万条）；分布式光伏智能巡控（容量识别99.5%、覆盖136万客户/4602万千瓦）。</li>
+      <li><b>企业经营</b>：综合计划投资智能评价（关键信息获取95%、评价效率+80%）；物资检测（报告周期1.5天→0.5天、规范率100%）；审计虚假项目（18省推广、准确率80%+、疑点43项涉4700余万）；输变电评审11专业200要点。</li>
+    </ul>
+    <h3>PART 4：AI工具应用——从提示词到自主闭环</h3>
+    <ul>
+      <li>大模型像"聪明但刚入职的新同事"，缺三样：引导（怎么干）、约束（不能乱来）、数据（必要资料）。需两个工具：<b>提示词（决定好不好用）+知识库（决定靠不靠谱）</b>。</li>
+      <li>提示词框架：APE（Action/Purpose/Execution）、ERA、RTF（Role/Task/Format）、TAG。好的提示词=设置场景+明确任务+规定输出+给例子。</li>
+      <li>引导式提问（启发式教学）：层层递进挖痛点。</li>
+      <li><b>知识库</b>：登录内网IM→AI助手→创建知识库→上传文档；选通义千问3建议。解决"缺乏内部数据导致回答偏离"。例：查复电时间、出差补助费计算、变压器空载损耗判定。</li>
+      <li><b>轻量化智能体</b>：封装固定工作流（开始/读取/分支/大模型/回复五类节点），适合高频重复、流程固定事务（宣传稿审核、工单回复）。网页助手插件+智能体模式（离线/在线）。</li>
+      <li><b>AI编程工具</b>：零代码一句话生成逻辑（班组个性化、临时定制）；对比普通智能体（低代码模板）更灵活。</li>
+      <li><b>类Claw工具</b>：长期记忆、跨系统协同、主动规划、数据本地不上云。案例：台区停电报告自动生成、电费回收进度统计、台区线损智能分析（阈值4.0%高损筛选）。</li>
+      <li>工具箱建设：内网AI助手Agent引擎（IM入口）、技能商城、V1.0.7版本。</li>
+      <li>结语：2026董事长要求AI全员化、工具化；立足岗位熟练运用，将AI转化为岗位实践成果。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== f9 职工创新政策 ========== -->
+<div class="filecard" id="f9" style="--c:#27ae60;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>⑨ 职工创新政策解读与创新平台阵地建设案例分享</h2><div class="meta">PPT · 2026.7.02 · 117页</div></div><span>▾</span></div>
+  <div class="body">
+    <h3>第一部分：政策背景与意义</h3>
+    <ul>
+      <li>党的二十届三中全会（2024.7）：推动技术革命性突破、生产要素创新性配置。</li>
+      <li>2024.1 习近平总书记对天津张黎明团队重要勉励；国网召开天津现场会（2024.2）、再学习推进会（2024.10）。</li>
+      <li>国网战略：科技创新是"国际领先"重要举措，"科技强企"列入"八大战略工程"。</li>
+      <li>《国网党组关于贯彻落实习近平总书记重要勉励精神进一步加强职工技术创新工作若干举措的通知》（国家电网党〔2024〕28号）：发布<b>22条举措</b>。</li>
+      <li>意义：增动能添活力的重要载体、提升班组建设水平途径、提升职工素质抓手。</li>
+    </ul>
+    <h3>第二部分：激励机制与制度</h3>
+    <ul>
+      <li><b>《国家电网有限公司职工技术创新管理办法》</b>（国网企管〔2020〕635号）：每两年评选优秀成果，每次择优<span class="num">80项</span>；奖金向主创倾斜，排名前40%完成人奖金比例不低于总奖金<span class="num">60%</span>。</li>
+      <li>2022年通知：获一等奖且综合前2名第一完成人可申报参评<b>国网工匠</b>。</li>
+      <li>《评比表彰管理办法》（国网企管/3 214-2026）：职工创新成果奖项。</li>
+      <li>山东省：创新创效"六统一"协同机制（鲁电办〔2016〕1号）；职工技术创新联盟运营管理办法（鲁电工会〔2020〕646号）；技术类成果转化推广管理办法（鲁电科技〔2021〕776号，激励总额单列管控）；专项管理办法（鲁电工会〔2024〕497号，为揭榜挂帅/联合攻关提供资金）。</li>
+      <li><b>成果奖评选（征求意见稿）</b>：总量≤40项，一等奖≤5、二等奖≤10、三等奖若干；奖励向前40%主创倾斜不低于60%；原集体企业专项表彰最高不超10%。</li>
+    </ul>
+    <h3>第三部分：创新阵地与平台</h3>
+    <ul>
+      <li><b>劳模创新工作室</b>：示范点考评每2年一次，表彰发奖牌+一次性资助<span class="num">5万元</span>（工会经费列支）。</li>
+      <li><b>"2211"工匠成长体系</b>：全员创新企业/劳模工匠工作室（培养平台）+劳动技能竞赛/创新创效竞赛（精进平台）+工匠学院（学习平台）+"齐鲁工匠"培育库（发展平台）。</li>
+      <li><b>山东省职工创新创效服务基地</b>：汇聚专家人才<span class="num">2009位</span>、高新企业<span class="num">419家</span>、创新成果<span class="num">1162项</span>、创新工作室<span class="num">504家</span>、共享实验室<span class="num">18家</span>。提供"一站式""全流程"成果转化服务（供需挖掘→推介→洽谈→履约）。王东明主席称赞"全国方向性、示范性意义"。</li>
+      <li>2025"鲁新杯"决赛：一等奖20、二等奖30、三等奖50。2026揭榜挂帅立项评审会（5家单位承接）。</li>
+    </ul>
+    <h3>第四部分：分层培育与案例</h3>
+    <ul>
+      <li><b>三级培育机制</b>：群众性创新（五小为主，班组/工作室自主）→联合攻关（技术难点、跨单位团队、资金≤20万）→揭榜挂帅（重大瓶颈、资金≤50万）。2026征集重大攻关需求45项→确定<span class="num">14项</span>（设备/营销/数字化/建设/调控五大专业）。</li>
+      <li>2025联合攻关项目（配电电缆反应力锥切削装置等）；2026确定联合攻关<span class="num">36项</span>，批复研发费用<span class="num">689.7万元</span>。</li>
+      <li>2026群众性创新<span class="num">507项</span>，批复研发费用<span class="num">2358.15万元</span>。</li>
+      <li><b>典型案例</b>：缠绕成型式电力电缆中间接头防火防爆技术（姜涛技能大师工作室，2016立项→2018发明专利→联盟联合攻关→2021省三等奖、2022国网二等奖→全国售5800余套、销售额3400余万，省内21%/省外79%）。</li>
+      <li>转化推广成果举例：多功能施工车（700余台/2000余万）、无人机挂装警示灯（25000余套/2000余万）、低压分布式光伏断路器（10余万套/2400余万）。</li>
+      <li>2026零购储备推广：架空线路无人机验电装拆接地线一体化装置、配网电缆早期故障感知终端、低压线路故障多模态定位等。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== f10 创新创效大讲堂 ========== -->
+<div class="filecard" id="f10" style="--c:#27ae60;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>⑩ 创新创效大讲堂（工作梳理）</h2><div class="meta">PPT · 国网烟台供电公司 · 14页</div></div><span>▾</span></div>
+  <div class="body">
+    <h3>目录</h3>
+    <ul>
+      <li>一、质量管理成果（QC）：①2024年QC小组活动时间节点安排 ②完成情况 ③QC小组故事演讲比赛 ④栖霞QC故事获奖情况</li>
+      <li>二、揭榜挂帅</li>
+      <li>三、群创（群众性创新）</li>
+      <li>四、青创赛（青年创新创意大赛）</li>
+      <li>五、管理创新</li>
+    </ul>
+    <p>即烟台公司创新创效工作的整体梳理：以QC小组、揭榜挂帅、群创、青创赛、管理创新为主要载体推进职工创新。</p>
+  </div>
+</div>
+
+<!-- ========== 专题 ========== -->
+<div class="filecard" id="t1" style="--c:#e67e22;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>专题A：AI核心概念速记</h2><div class="meta">跨文件整合</div></div><span>▾</span></div>
+  <div class="body">
+    <ul>
+      <li><b>Token/词元</b>：AI世界"水表"，按字计量；2026.3.23定名；中文1.5汉字≈1Token。</li>
+      <li><b>模型</b>：AI"大脑"；小模型→通用大模型→行业垂直模型。</li>
+      <li><b>知识库</b>：AI"书架"；解决垂直领域知识欠缺，可随时更新。</li>
+      <li><b>Agent/智能体</b>：配备大脑的"数字员工"；目标→拆解→调用工具→闭环。</li>
+      <li><b>Harness</b>：大模型外的"操作系统"（CPU+内存硬盘工具调度）。</li>
+      <li><b>Skill</b>：AI"App"/能力包，经验沉淀复用（软件3D打印）。</li>
+      <li><b>光明电力大模型</b>：国网首个千亿级多模态电力行业大模型（2024.12.19）。</li>
+      <li><b>世界模型</b>：感知→推演→决策，强调可解释。</li>
+      <li><b>具身智能</b>：2025/2026政府工作报告连续培育；2026.6.1行业标准实施。</li>
+      <li><b>提示词框架</b>：APE / ERA / RTF / TAG；好提示=场景+任务+输出+例子。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="filecard" id="t2" style="--c:#c0392b;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>专题B：关键数据指标速查</h2><div class="meta">考试易考数字</div></div><span>▾</span></div>
+  <div class="body">
+    <ul>
+      <li>山东GDP <span class="num">10.3万亿</span>（2025）；"十五五"增速目标<span class="num">5%</span>；三次产业<span class="num">6.6:39.3:54.1</span>。</li>
+      <li>非化石能源装机占比<span class="num">54%</span>（2025，超煤电）；光伏装机连续<span class="num">8年</span>全国第一。</li>
+      <li>全国GDP <span class="num">140万亿</span>（2025）；全球创新指数中国第<span class="num">10位</span>（2025）；R&D <span class="num">3.9万亿</span>。</li>
+      <li>AI平台：用户<span class="num">10万</span>、访问<span class="num">443.7万次</span>、调用<span class="num">770.5万次</span>、智能体<span class="num">528个</span>、大模型<span class="num">15个</span>。</li>
+      <li>负荷预测准确率<span class="num">98%</span>；工单高风险识别率<span class="num">92%</span>；无人机巡检缺陷识别<span class="num">85-90%</span>；10kV故障率降<span class="num">40%</span>、抢修效率升<span class="num">60%</span>。</li>
+      <li>抢修时限：城区<span class="num">45分钟</span>、农村<span class="num">90分钟</span>。</li>
+      <li>考核：培训表现<span class="num">30分</span>+考试<span class="num">70分</span>+奖励积分；请假不超总课时<span class="num">1/7</span>。</li>
+      <li>职工创新：优秀成果每次<span class="num">80项</span>；前40%主创奖金≥<span class="num">60%</span>；劳模工作室资助<span class="num">5万</span>；2026群创<span class="num">507项</span>/2358万；联合攻关<span class="num">36项</span>/689.7万；重大攻关<span class="num">14项</span>。</li>
+      <li>采集2.0：停电事件<span class="num">10分钟内</span>上报；终端只接收<span class="num">5只</span>电能表停电事件防误报。</li>
+      <li>数据中心用电：2025我国<span class="num">1660亿</span>度（1.68%）；2030将超<span class="num">7000亿</span>度（5.3%）。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="filecard" id="t3" style="--c:#8e44ad;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>专题C：政策与激励要点</h2><div class="meta">考试易考条文</div></div><span>▾</span></div>
+  <div class="body">
+    <ul>
+      <li><b>政绩观</b>："为民造福是最大政绩"；"把抓好党建作为最大的政绩"；"民之所盼、我必行之"。</li>
+      <li><b>权力观四问</b>：为何物、为何授、为何用、依何行；"公正用权、依法用权、为民用权、廉洁用权"。</li>
+      <li><b>五个关系</b>：党性/个性、对上/对下、潜绩/显绩、干事/成事、自律/他律。</li>
+      <li><b>人工智能+</b>：国发〔2025〕11号《关于深入实施"人工智能+"行动的意见》（2025.8）；林董"全员化、工具化"。</li>
+      <li><b>职工创新22条</b>：国家电网党〔2024〕28号；每两年评优成果80项；鲁电工会〔2024〕497号专项资金。</li>
+      <li><b>供电营业规则</b>：第三十条（过户）、第三十一条（更名）；第三十五条（连续6个月不用电可公告销户）。</li>
+      <li><b>采集2.0</b>：营销计量〔2024〕61号，停电"早知快处"。</li>
+      <li><b>网络安全十严禁</b>：弱口令、无关软件、无线热点、互联网传敏感、内外混用、私开出口、未授权入网、未测评入网、违规U盘、外网连互联网。</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="filecard" id="quiz" style="--c:#c0392b;">
+  <div class="head" onclick="this.parentNode.classList.toggle('open')"><div><h2>⑪ 复习题库（原样收录 · 30道）</h2><div class="meta">来源：复习资料.docx · 单选题18 / 多选题6 / 判断题6</div></div><span>▾</span></div>
+  <div class="body">
+    <div class="quiz-title">题库(单选题18道，多选题6道，判断题6道，共计30道）</div>
+
+    <div class="question">
+      <div class="qhead">第1题 <span class="qtype">单选题</span> <span class="ans">答案：C</span></div>
+      <div class="stem">1.习近平总书记指出，树立和践行正确的政绩观，起决定性作用的是（ ）</div>
+      <div class="opt">A.个人能力</div><div class="opt">B.群众口碑</div><div class="opt">C.党性</div><div class="opt">D.上级评价</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第2题 <span class="qtype">单选题</span> <span class="ans">答案：B</span></div>
+      <div class="stem">2.“十五五”时期，山东省生产总值年均增速设定为（ ），并强调“工作中全力争取更好结果”A.4.5%</div>
+      <div class="opt">B.5%</div><div class="opt">C.5.5%</div><div class="opt">D.6%</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第3题 <span class="qtype">单选题</span> <span class="ans">答案：B</span></div>
+      <div class="stem">3.关于正确权力观，下列哪一项表述是错误的？（ ）</div>
+      <div class="opt">A.权力来源于人民，属于人民</div><div class="opt">B.权力是个人奋斗所得，可以自由支配</div><div class="opt">C.权力必须依法依规运行</div><div class="opt">D.权力只能用来为党分忧、为国干事、为民谋利</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第4题 <span class="qtype">单选题</span> <span class="ans">答案：B</span></div>
+      <div class="stem">4.客户申请充电站新装，供电公司在验收环节才要求提供电能质量评估报告，前期未告知，该工单被列为（）</div>
+      <div class="opt">A.普通咨询工单</div><div class="opt">B.服务风险升级处置工单</div><div class="opt">C.抢修工单</div><div class="opt">D.电费争议工单</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第5题 <span class="qtype">单选题</span> <span class="ans">答案：C</span></div>
+      <div class="stem">5.客户到营业厅交纳电费但无法提供户号，以下做法符合规范要求的是（ ）</div>
+      <div class="opt">A.告知客户回家查找户号后再来交费</div><div class="opt">B.要求客户必须提供上次交费小条，否则不予办理</div><div class="opt">C.通过开放式问题核实户名、用电地址等信息，3项及以上相符即可受理</div><div class="opt">D.让客户自行联系台区经理确认户号后再来</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第6题 <span class="qtype">单选题</span> <span class="ans">答案：A</span></div>
+      <div class="stem">6.被誉为“人工智能之父”的科学家是（ ）。</div>
+      <div class="opt">A.约翰·麦卡锡</div><div class="opt">B. 萨姆·奥尔特曼</div><div class="opt">C.梁文锋</div><div class="opt">D.杰弗里·辛顿</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第7题 <span class="qtype">单选题</span> <span class="ans">答案：D</span></div>
+      <div class="stem">7.客户因电量电费异常致电95598反映诉求，工作人员上门核实供电公司产权接线和设备无误后，建议客户观察一段时间。这种做法存在的主要问题是（）</div>
+      <div class="opt">A.未及时更换电能表</div><div class="opt">B.未向客户收取合理费用</div><div class="opt">C.未记录客户联系方式</div><div class="opt">D.未主动协助客户开展用能诊断分析</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第8题 <span class="qtype">单选题</span> <span class="ans">答案：B</span></div>
+      <div class="stem">8.海尔集团董事局名誉主席张瑞敏提出的“没有成功的企业，只有时代的企业”，核心含义是（）A.企业只要抓住风口就能永远成功</div>
+      <div class="opt">B.企业的成功具有阶段性，必须持续与时俱进</div><div class="opt">C.只有新兴产业才有发展机会</div><div class="opt">D.传统企业注定会被淘汰</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第9题 <span class="qtype">单选题</span> <span class="ans">答案：C</span></div>
+      <div class="stem">9.2024年诺贝尔物理学奖授予了约翰·霍普菲尔德和杰弗里·辛顿，以表彰他们在哪一领域的奠基性贡献？（ ）</div>
+      <div class="opt">A.专家系统与知识工程</div><div class="opt">B.量子计算与并行算法</div><div class="opt">C.人工神经网络与机器学习</div><div class="opt">D.机器人控制与传感器融合</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第10题 <span class="qtype">单选题</span> <span class="ans">答案：A</span></div>
+      <div class="stem">10.以下关于大模型的说法，错误的是（ ）</div>
+      <div class="opt">A.大模型只需要少量数据即可完成训练</div><div class="opt">B.大模型具有强大的泛化能力</div><div class="opt">C.大模型通常具有数百万到数十亿甚至万亿级参数</div><div class="opt">D.大模型训练需要大量计算资源</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第11题 <span class="qtype">单选题</span> <span class="ans">答案：B</span></div>
+      <div class="stem">11.《爆裂》一书提出的九大创新原则中，强调“自下而上的群体智慧往往优于自上而下的权威决策”的是哪一项？（ ）</div>
+      <div class="opt">A.拉力优于推力</div><div class="opt">B.涌现优于权威</div><div class="opt">C.指南针优于地图</div><div class="opt">D.多样性优于能力</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第12题 <span class="qtype">单选题</span> <span class="ans">答案：C</span></div>
+      <div class="stem">12.在“新一代”系统中，查询“终端停上电事件”的正确路径是？（）</div>
+      <div class="opt">A.数据批量查询-曲线数据批量查询-电压曲线</div><div class="opt">B.数据批量查询-事件数据查询-电能表事件-电能表掉电</div><div class="opt">C.数据批量查询-事件数据查询-终端事件-终端停上电事件</div><div class="opt">D.拓展应用—停电监测-停电统计</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第13题 <span class="qtype">单选题</span> <span class="ans">答案：C</span></div>
+      <div class="stem">13.以下哪种停电查询方法被评价为“简单明了”但“信息不准”？（）</div>
+      <div class="opt">A.依据停电事件查询</div><div class="opt">B.透抄电能表内数据</div><div class="opt">C.依据曲线查询</div><div class="opt">D.依据停电监测查询</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第14题 <span class="qtype">单选题</span> <span class="ans">答案：B</span></div>
+      <div class="stem">14.营业厅办理过户业务时，以下哪项做法是正确的？（）</div>
+      <div class="opt">A.凭客户口头申请即可办理</div><div class="opt">B.必须调取、核验房屋产权信息，确保产权无纠纷</div><div class="opt">C.无需现场勘察，依据系统记录即可</div><div class="opt">D.租赁户可凭租赁合同直接办理，无需原户主同意</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第15题 <span class="qtype">单选题</span> <span class="ans">答案：B</span></div>
+      <div class="stem">15.非暴力沟通的四个要素，正确的顺序是？（）</div>
+      <div class="opt">感受、观察、需求、请求</div><div class="opt">观察、感受、需求、请求</div><div class="opt">需求、观察、感受、请求</div><div class="opt">请求、观察、感受、需求</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第16题  <span class="ans">答案：D</span></div>
+      <div class="stem">16. 关于创新思维，下列哪种说法是错误的？（）</div>
+      <div class="opt">A.创新思维鼓励跨学科思考和融合</div><div class="opt">B.创新思维强调快速迭代和持续改进</div><div class="opt">C.创新思维注重行动和实践验证</div><div class="opt">D.创新思维要求完全摒弃所有既有知识和经验</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第17题 <span class="qtype">单选题</span> <span class="ans">答案：A</span></div>
+      <div class="stem">17.新时代我们党的奋斗目标是（）</div>
+      <div class="opt">A.人民对美好生活的向往</div><div class="opt">B.单纯GDP增长</div><div class="opt">C.打造形象工程</div><div class="opt">D.扩大干部职权</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第18题 <span class="qtype">单选题</span> <span class="ans">答案：A</span></div>
+      <div class="stem">以下哪项不属于“依据停电监测查询”提供的功能？（）</div>
+      <div class="opt">A.电能示值曲线查询</div><div class="opt">B.停电统计</div><div class="opt">C.重点用户监测</div><div class="opt">D.停电趋势分析</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第19题 <span class="qtype">多选题</span> <span class="ans">答案：ABC</span></div>
+      <div class="stem">以下关于Transformer架构的说法，正确的有（ ）</div>
+      <div class="opt">A.采用注意力机制</div><div class="opt">B.适合并行计算</div><div class="opt">C.擅长处理长距离上下文依赖</div><div class="opt">D.主要用于图像识别任务</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第20题 <span class="qtype">多选题</span> <span class="ans">答案：ABC</span></div>
+      <div class="stem">20.以下哪些属于公司对AI应用提出的要求？（）</div>
+      <div class="opt">A.看清趋势</div><div class="opt">B.转变观念</div><div class="opt">C.加强统筹</div><div class="opt">D.减少算力投入</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第21题 <span class="qtype">多选题</span> <span class="ans">答案：ABCD</span></div>
+      <div class="stem">21.关于山东“十五五”时期区域发展格局“两圈联动、三核引领、陆海统筹、全面发力”的说法，正确的有（ ）</div>
+      <div class="opt">A.“两圈”指济南都市圈和青岛都市圈</div><div class="opt">B.“三核”指济南、青岛、烟台三个万亿级城市</div><div class="opt">C.“陆海统筹”强调推动陆地与海洋经济协调发展</div><div class="opt">D.“全面发力”包括推动临沂、济宁加快迈向万亿城市</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第22题 <span class="qtype">多选题</span> <span class="ans">答案：ABD</span></div>
+      <div class="stem">下列属于正确政绩观核心要义的有（ ）</div>
+      <div class="opt">政绩为人民而树</div><div class="opt">政绩要经得起实践、人民、历史检验</div><div class="opt">政绩主要看GDP增长速度</div><div class="opt">靠真抓实干、勇于担当、廉洁奉公树政绩</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第23题 <span class="qtype">多选题</span> <span class="ans">答案：ABC</span></div>
+      <div class="stem">23.关于抢修服务规范，下列做法正确的有（ ）</div>
+      <div class="opt">A.接到报修电话后第一时间与客户联系，表态立即出发</div><div class="opt">B.城区到达现场时限为45分钟，农村为90分钟</div><div class="opt">C.遇有特殊恶劣天气不具备抢修条件时，应及时向客户解释沟通</div><div class="opt">D.抢修人员可以因吃饭、睡觉等个人原因延迟到达现场</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第24题 <span class="qtype">多选题</span> <span class="ans">答案：BC</span></div>
+      <div class="stem">24.关于“更名”与“过户”业务，说法正确的有（ ）</div>
+      <div class="opt">A.过户无需现场勘察</div><div class="opt">B.更名适用于用电主体、用电地址、用电容量不变的场景</div><div class="opt">C.过户前原用户应结清债务</div><div class="opt">D.租赁户仅凭租赁协议即可过户</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第25题 <span class="qtype">判断题</span> <span class="ans">答案：A</span></div>
+      <div class="stem">2025年，山东省全社会研发投入年均增长11.5%，研发投入强度首次超过OECD国家平均水平。</div>
+      <div class="opt">A.对</div><div class="opt">B.错</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第26题 <span class="qtype">判断题</span> <span class="ans">答案：B</span></div>
+      <div class="stem">创新思维只需要理论构思，不需要落地实践。</div>
+      <div class="opt">A. 对</div><div class="opt">B. 错</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第27题 <span class="qtype">判断题</span> <span class="ans">答案：B</span></div>
+      <div class="stem">单向沟通是指信息发送者和接收者需要多次商议，直到双方共同明确和基本满意为止。</div>
+      <div class="opt">A. 对</div><div class="opt">B. 错</div><div class="opt">28.权力是一把“双刃剑”，因此领导干部在使用权力时应尽量谨慎，少用权、不用权，以避免权力带来的风险。</div><div class="opt">A. 对</div><div class="opt">B. 错</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第28题 <span class="qtype">判断题</span> <span class="ans">答案：B</span></div>
+      <div class="stem">29.客户连续5个月不用电，供电公司可直接销户，无需告知客户。</div>
+      <div class="opt">A.对</div><div class="opt">B.错</div>
+    </div>
+
+    <div class="question">
+      <div class="qhead">第29题 <span class="qtype">判断题</span> <span class="ans">答案：A</span></div>
+      <div class="stem">大模型的“神经元”规模最高已达10万亿，是人类大脑规模的1/10。</div>
+      <div class="opt">A.对</div><div class="opt">B.错</div>
+    </div>
+    <p style="font-size:12px;color:#95a5a6;margin-top:10px;">说明：本题库按原文档顺序与文字原封不动收录，仅按出现顺序标注"第N题"便于翻阅，题型/答案均照原文呈现。</p>
+  </div>
+</div>
+</main>
+</div>
+
+<div class="footer">
+  详版速查手册由培训班全部 PPT/PDF 自动深度提取生成，覆盖学员手册、权力观论述、山东经济、五级停电、供电服务风险、采集2.0通知、AI技术前沿、AI应用实践、职工创新政策、创新创效大讲堂共10份材料，并附3个跨文件专题。点击标题展开/收起，顶部搜索框可高亮定位关键词。建议考试前结合原文件核对精确数字。
+</div>
+
+<script>
+function search(){
+  var kw=document.getElementById('q').value.trim();
+  var cards=document.querySelectorAll('.filecard');
+  var visible=0;
+  cards.forEach(function(c){
+    var txt=c.innerText;
+    if(!kw){c.style.display='';clearMarks(c);if(!c.classList.contains('open'))c.classList.add('open');visible++;}
+    else if(txt.indexOf(kw)>=0){c.style.display='';c.classList.add('open');visible++;mark(c,kw);}
+    if(kw && c.id==='nav'){}
+    else{c.style.display='none';}
+  });
+  document.getElementById('cnt').innerText='命中 '+visible+' / '+cards.length+' 份';
+}
+function mark(card,kw){
+  clearMarks(card);
+  card.querySelectorAll('li,p,h3,.kv').forEach(function(el){
+    var html=el.innerHTML;
+    if(html.indexOf('<mark>')<0){
+      el.innerHTML=html.replace(new RegExp('('+kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','g'),'<mark>$1</mark>');
+    }
+  });
+}
+function clearMarks(card){
+  card.querySelectorAll('mark').forEach(function(m){m.outerHTML=m.innerText;});
+}
+function toggleAll(){
+  var cards=document.querySelectorAll('.filecard');
+  var anyClosed=false;
+  cards.forEach(function(c){if(!c.classList.contains('open'))anyClosed=true;});
+  cards.forEach(function(c){if(anyClosed)c.classList.add('open');else c.classList.remove('open');});
+}
+// 手机端默认全收起，桌面端首卡展开
+if(window.innerWidth <= 820){
+  document.querySelectorAll('.filecard.open').forEach(function(c){c.classList.remove('open');});
+}else{
+  var first=document.querySelector('.filecard'); if(first) first.classList.add('open');
+}
+window.addEventListener('resize',function(){
+  if(window.innerWidth <= 820){document.getElementById('nav').classList.remove('show');}
+});
+</script>
+</body>
+</html>
