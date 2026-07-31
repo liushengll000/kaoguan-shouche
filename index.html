@@ -762,10 +762,19 @@ function search(){
   var visible=0;
   cards.forEach(function(c){
     var txt=c.innerText;
-    if(!kw){c.style.display='';clearMarks(c);if(!c.classList.contains('open'))c.classList.add('open');visible++;}
-    else if(txt.indexOf(kw)>=0){c.style.display='';c.classList.add('open');visible++;mark(c,kw);}
-    if(kw && c.id==='nav'){}
-    else{c.style.display='none';}
+    if(!kw){
+      c.style.display='';
+      clearMarks(c);
+      if(!c.classList.contains('open'))c.classList.add('open');
+      visible++;
+    } else if(txt.indexOf(kw)>=0){
+      c.style.display='';
+      c.classList.add('open');
+      visible++;
+      mark(c,kw);
+    } else {
+      c.style.display='none';
+    }
   });
   document.getElementById('cnt').innerText='命中 '+visible+' / '+cards.length+' 份';
 }
